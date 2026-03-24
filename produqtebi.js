@@ -1495,7 +1495,17 @@ function resetReview() {
   document.querySelectorAll('.mini-comment').forEach(t=>t.value='');
   goStep(1);
 }
- 
+ // ← ეს დაამატე INIT ბლოკამდე
+getRedirectResult(auth).then(result => {
+  if (result?.user) {
+    closeLogin();
+    if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
+    if (window._pendingFavs)   { window._pendingFavs = false; showPage('favs'); }
+  }
+}).catch(e => console.error(e));
+
+/* ══ INIT ══ */
+buildRestGrid(); buildCategoryGrid(); buildFoodCatGrid(); buildStarRows(); loadReviews();
 /* ══ INIT ══ */
 buildRestGrid(); buildCategoryGrid(); buildFoodCatGrid(); buildStarRows(); loadReviews();
 
