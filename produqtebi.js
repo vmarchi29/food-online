@@ -12,7 +12,7 @@ import {
 
 const firebaseConfig = {
   apiKey: "AIzaSyAliuB2GqRm0s1U-2KuGVp6I0WThigGxPA",
-  authDomain: "vmarchi29.github.io",
+  authDomain: "georgian-bites.firebaseapp.com",
   projectId: "georgian-bites",
   storageBucket: "georgian-bites.firebasestorage.app",
   messagingSenderId: "485486300439",
@@ -643,20 +643,14 @@ onAuthStateChanged(auth, user => {
 async function signInGoogle() {
   try {
     await setPersistence(auth, browserLocalPersistence);
-    
-    // iPhone/Safari-ზე redirect, სხვაზე popup
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    
-    if (isIOS || isSafari) {
-      await signInWithRedirect(auth, provider);
-    } else {
-      await signInWithPopup(auth, provider);
-      closeLogin();
-      if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
-    }
+    await signInWithPopup(auth, provider);
+    closeLogin();
+    if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
   } catch(e) { 
     console.error('Auth error:', e.code, e.message);
+    if (e.code === 'auth/popup-blocked') {
+      alert('გთხოვ დაუშვა Popup — Safari-ს პარამეტრებში:\nSettings → Safari → Block Pop-ups → გამორთე');
+    }
   }
   if (window._pendingFavs) { window._pendingFavs = false; showPage('favs'); }
 }
