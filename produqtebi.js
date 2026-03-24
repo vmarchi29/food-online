@@ -642,20 +642,18 @@ onAuthStateChanged(auth, user => {
 }); 
 async function signInGoogle() {
   try {
-    // In-App Browser შემოწმება (Facebook, Messenger, Instagram, Telegram...)
     const ua = navigator.userAgent;
     const isInAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger|WebView|wv/i.test(ua);
     
     if (isInAppBrowser) {
+      const currentUrl = window.location.href;
       const isAndroid = /Android/i.test(ua);
       const isIOS = /iPhone|iPad|iPod/i.test(ua);
       
       if (isAndroid) {
-        alert('გთხოვ გახსენი Chrome-ში:\nქვედა მენიუ (⋮) → "Chrome-ში გახსნა"');
+        window.open('intent://' + currentUrl.replace(/https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end', '_blank');
       } else if (isIOS) {
-        alert('გთხოვ გახსენი Safari-ში:\nქვედა მენიუ → "Safari-ში გახსნა"');
-      } else {
-        alert('გთხოვ გახსენი ბრაუზერში და სცადე თავიდან');
+        window.location.href = currentUrl.replace('https://', 'googlechrome://');
       }
       return;
     }
