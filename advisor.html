@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>რეკლამა — Food online - ზე</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;700;900&family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --wine:       #7B1F2E;
+      --wine-dark:  #4E0F1A;
+      --wine-light: #A83245;
+      --gold:       #C9A84C;
+      --gold-light: #E8C96A;
+      --cream:      #FAF6EE;
+      --cream-dark: #F0EAE0;
+      --text:       #1A0A0E;
+      --text-muted: #6B4E56;
+      --border:     rgba(123,31,46,0.15);
+      --shadow:     0 8px 40px rgba(78,15,26,0.12);
+      --radius:     14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans Georgian', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    
+    /* ══ HEADER ══ */
+    header {
+      background: var(--wine-dark);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 68px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0.7rem;
+      text-decoration: none; cursor: pointer;
+    }
+    .logo-icon { font-size: 1.9rem; }
+    .logo-text {
+      font-family: 'Noto Serif Georgian', serif;
+      font-weight: 900; font-size: 1.2rem;
+      color: var(--gold-light);
+    }
+    .logo-sub {
+      display: block; font-size: 0.6rem;
+      color: rgba(232,201,106,0.55);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .back-btn {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.45rem 1rem;
+      background: var(--gold); color: var(--wine-dark);
+      border: none; border-radius: 8px;
+      font-family: 'Noto Sans Georgian', sans-serif;
+      font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s;
+      text-decoration: none;
+    }
+    .back-btn:hover { background: var(--gold-light); }
+
+    /* ══ HERO ══ */
+    .hero {
+      background: linear-gradient(135deg, var(--wine-dark) 0%, var(--wine) 55%, var(--wine-light) 100%);
+      color: white; text-align: center;
+      padding: 4rem 2rem 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold); color: var(--wine-dark);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.28rem 1rem; border-radius: 20px;
+      margin-bottom: 1.2rem; position: relative;
+    }
+    .hero h1 {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900; margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .hero p {
+      font-size: 1rem; opacity: 0.8;
+      max-width: 500px; margin: 0 auto;
+      line-height: 1.7; position: relative;
+    }
+
+    /* ══ STATS BAR ══ */
+    .stats-bar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+    }
+    .stats-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; justify-content: center; gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--wine); display: block;
+    }
+    .stat-label {
+      font-size: 0.75rem; color: var(--text-muted);
+      font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ══ MAIN ══ */
+    .container {
+      max-width: 1000px; margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--wine-dark);
+      margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      color: var(--text-muted); font-size: 0.88rem;
+      margin-bottom: 2rem; line-height: 1.6;
+    }
+
+    /* ══ BANNER CARDS ══ */
+    .banners-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .banner-card {
+      background: white;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .banner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 50px rgba(78,15,26,0.16);
+      border-color: var(--wine-light);
+    }
+
+    .banner-card-top {
+      background: linear-gradient(135deg, var(--wine-dark), var(--wine));
+      padding: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .banner-num {
+      width: 44px; height: 44px;
+      background: var(--gold);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1.2rem; font-weight: 900;
+      color: var(--wine-dark); flex-shrink: 0;
+    }
+    .banner-card-title {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1rem; font-weight: 700;
+      color: white; line-height: 1.3;
+    }
+    .banner-card-loc {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.2rem;
+    }
+
+    .banner-card-body { padding: 1.25rem 1.5rem; }
+
+    .banner-preview {
+      background: var(--cream-dark);
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: var(--text-muted);
+      font-weight: 600; letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .banner-preview.wide  { height: 60px; }
+    .banner-preview.square { height: 90px; }
+
+    .banner-meta {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .banner-meta-row {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .banner-meta-icon { flex-shrink: 0; }
+    .banner-meta-label { color: var(--text-muted); min-width: 60px; }
+    .banner-meta-val { color: var(--text); font-weight: 600; }
+
+    .banner-price {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+    }
+    .price-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+    .price-val {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--wine);
+    }
+    .price-per { font-size: 0.7rem; color: var(--text-muted); }
+
+    /* banner card — full width */
+    .banner-card.full {
+      grid-column: 1 / -1;
+    }
+    .banner-card.full .banner-card-top {
+      padding: 1.25rem 1.5rem;
+    }
+    .banner-card.full .banner-card-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    .banner-card.full .banner-preview.wide {
+      height: 50px;
+      margin-bottom: 0;
+    }
+
+    /* ══ CONTACT SECTION ══ */
+    .contact-section {
+      background: white;
+      border-radius: var(--radius);
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .contact-top {
+      background: linear-gradient(135deg, var(--wine-dark), var(--wine));
+      padding: 2rem;
+      text-align: center;
+    }
+    .contact-top h2 {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: white; margin-bottom: 0.4rem;
+    }
+    .contact-top p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem; line-height: 1.6;
+    }
+
+    .contact-body {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .contact-card {
+      background: var(--cream);
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      padding: 1.25rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.5rem;
+    }
+    .contact-card:hover {
+      border-color: var(--wine-light);
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(123,31,46,0.1);
+    }
+    .contact-icon { font-size: 2rem; }
+    .contact-label {
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--text-muted); text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .contact-val {
+      font-weight: 700; font-size: 0.88rem;
+      color: var(--wine-dark); word-break: break-all;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: var(--wine);
+      color: white;
+      font-size: 0.72rem; font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-top: 0.25rem;
+    }
+
+    /* ══ FOOTER ══ */
+    footer {
+      background: var(--wine-dark);
+      color: rgba(250,246,238,0.55);
+      text-align: center; padding: 2rem 1.5rem;
+      font-size: 0.8rem; line-height: 2;
+    }
+    footer strong { color: var(--gold-light); font-family: 'Noto Serif Georgian', serif; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 700px) {
+  .banners-grid {
+    grid-template-columns: 1fr;
+  }
+  .banner-card.full .banner-card-body {
+    grid-template-columns: 1fr;
+  }
+  .contact-body {
+    grid-template-columns: 1fr;
+  }
+  .stats-inner {
+    gap: 1.5rem;
+  }
+  .header-inner {
+    padding: 0 1rem;
+  }
+  .hero {
+    padding: 2.5rem 1rem 2rem;
+  }
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  .hero p {
+    font-size: 0.85rem;
+  }
+  .container {
+    padding: 1.5rem 1rem;
+  }
+  .banner-card-top {
+    padding: 1rem;
+  }
+  .banner-card-body {
+    padding: 1rem;
+  }
+  .stat-num {
+    font-size: 1.4rem;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+  }
+  .stats-inner {
+    gap: 1rem;
+  }
+  .back-btn span {
+    display: none;
+  }
+  .contact-top {
+    padding: 1.25rem 1rem;
+  }
+  .contact-top h2 {
+    font-size: 1.1rem;
+  }
+  .contact-body {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+  .section-title {
+    font-size: 1.2rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <a href="./index.html" class="logo">
+      <span class="logo-icon">🍽️</span>
+      <div>
+        <span class="logo-text">Food online</span>
+        <span class="logo-sub">რესტორნები საქართველოში</span>
+      </div>
+    </a>
+    <a href="./index.html" class="back-btn">← მთავარზე დაბრუნება</a>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-badge">📢 რეკლამა</div>
+  <h1>განათავსე რეკლამა<br/>Food online - ზე</h1>
+  <p>მიაღწიე ათასობით მომხმარებელს, რომლებიც ყოველდღე ეძებენ საუკეთესო კერძებს და რესტორნებს თბილისში</p>
+</div>
+
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">300+</span>
+      <span class="stat-label">რესტორანი</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">350+</span>
+      <span class="stat-label">კერძი</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">4</span>
+      <span class="stat-label">რეკლამის ადგილი</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">150₾</span>
+      <span class="stat-label">თვე</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div class="container">
+
+  <div class="section-title">📍 რეკლამის ადგილები</div>
+  <p class="section-sub">სულ 4 პოზიცია — 2 მარცხნივ, 2 მარჯვნივ. თითოეული sidebar banner ჩანს მთავარ გვერდზე ძებნის დროს.</p>
+
+  <div class="banners-grid">
+
+    <!-- მარცხენა ზედა -->
+    <div class="banner-card">
+      <div class="banner-card-top">
+        <div class="banner-num">1</div>
+        <div>
+          <div class="banner-card-title">მარცხენა ზედა ბანერი</div>
+          <div class="banner-card-loc">📍 მარცხენა სვეტი — ზედა პოზიცია</div>
+        </div>
+      </div>
+      <div class="banner-card-body">
+        <div class="banner-preview square">160 × 250 px</div>
+        <div class="banner-meta">
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">📐</span>
+            <span class="banner-meta-label">ზომა:</span>
+            <span class="banner-meta-val">160 × 250 px</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">🌐</span>
+            <span class="banner-meta-label">გვერდი:</span>
+            <span class="banner-meta-val">მთავარი გვერდი</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">👁️</span>
+            <span class="banner-meta-label">ჩანს:</span>
+            <span class="banner-meta-val">ძებნის დროს sticky</span>
+          </div>
+        </div>
+        <div class="banner-price">
+          <span class="price-label">ფასი</span>
+          <div>
+            <span class="price-val">150₾</span>
+            <span class="price-per"> / თვე</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- მარცხენა ქვედა -->
+    <div class="banner-card">
+      <div class="banner-card-top">
+        <div class="banner-num">2</div>
+        <div>
+          <div class="banner-card-title">მარცხენა ქვედა ბანერი</div>
+          <div class="banner-card-loc">📍 მარცხენა სვეტი — ქვედა პოზიცია</div>
+        </div>
+      </div>
+      <div class="banner-card-body">
+        <div class="banner-preview square">160 × 250 px</div>
+        <div class="banner-meta">
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">📐</span>
+            <span class="banner-meta-label">ზომა:</span>
+            <span class="banner-meta-val">160 × 250 px</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">🌐</span>
+            <span class="banner-meta-label">გვერდი:</span>
+            <span class="banner-meta-val">მთავარი გვერდი</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">👁️</span>
+            <span class="banner-meta-label">ჩანს:</span>
+            <span class="banner-meta-val">ძებნის დროს sticky</span>
+          </div>
+        </div>
+        <div class="banner-price">
+          <span class="price-label">ფასი</span>
+          <div>
+            <span class="price-val">150₾</span>
+            <span class="price-per"> / თვე</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- მარჯვენა ზედა -->
+    <div class="banner-card">
+      <div class="banner-card-top">
+        <div class="banner-num">3</div>
+        <div>
+          <div class="banner-card-title">მარჯვენა ზედა ბანერი</div>
+          <div class="banner-card-loc">📍 მარჯვენა სვეტი — ზედა პოზიცია</div>
+        </div>
+      </div>
+      <div class="banner-card-body">
+        <div class="banner-preview square">160 × 250 px</div>
+        <div class="banner-meta">
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">📐</span>
+            <span class="banner-meta-label">ზომა:</span>
+            <span class="banner-meta-val">160 × 250 px</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">🌐</span>
+            <span class="banner-meta-label">გვერდი:</span>
+            <span class="banner-meta-val">მთავარი გვერდი</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">👁️</span>
+            <span class="banner-meta-label">ჩანს:</span>
+            <span class="banner-meta-val">ძებნის დროს sticky</span>
+          </div>
+        </div>
+        <div class="banner-price">
+          <span class="price-label">ფასი</span>
+          <div>
+            <span class="price-val">150₾</span>
+            <span class="price-per"> / თვე</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- მარჯვენა ქვედა -->
+    <div class="banner-card">
+      <div class="banner-card-top">
+        <div class="banner-num">4</div>
+        <div>
+          <div class="banner-card-title">მარჯვენა ქვედა ბანერი</div>
+          <div class="banner-card-loc">📍 მარჯვენა სვეტი — ქვედა პოზიცია</div>
+        </div>
+      </div>
+      <div class="banner-card-body">
+        <div class="banner-preview square">160 × 250 px</div>
+        <div class="banner-meta">
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">📐</span>
+            <span class="banner-meta-label">ზომა:</span>
+            <span class="banner-meta-val">160 × 250 px</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">🌐</span>
+            <span class="banner-meta-label">გვერდი:</span>
+            <span class="banner-meta-val">მთავარი გვერდი</span>
+          </div>
+          <div class="banner-meta-row">
+            <span class="banner-meta-icon">👁️</span>
+            <span class="banner-meta-label">ჩანს:</span>
+            <span class="banner-meta-val">ძებნის დროს sticky</span>
+          </div>
+        </div>
+        <div class="banner-price">
+          <span class="price-label">ფასი</span>
+          <div>
+            <span class="price-val">150₾</span>
+            <span class="price-per"> / თვე</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- end banners-grid -->
+
+  <!-- ══ CONTACT ══ -->
+  <div class="contact-section">
+    <div class="contact-top">
+      <h2>📩 დაგვიკავშირდით</h2>
+      <p>რეკლამის განსათავსებლად ან კითხვებისთვის<br/>დაგვიკავშირდით ნებისმიერი არხით</p>
+    </div>
+    <div class="contact-body">
+
+      <a href="mailto:vmarchilashvili@gmail.com" class="contact-card">
+        <span class="contact-icon">📧</span>
+        <span class="contact-label">Email</span>
+        <span class="contact-val">vmarchilashvili@gmail.com</span>
+        <span class="contact-btn">გაგზავნე მეილი</span>
+      </a>
+
+      <a href="tel:+995574013698" class="contact-card">
+        <span class="contact-icon">📞</span>
+        <span class="contact-label">ტელეფონი</span>
+        <span class="contact-val">+995 574 013 698</span>
+        <span class="contact-btn">დარეკე</span>
+      </a>
+
+      <a href="https://wa.me/995574013698" target="_blank" class="contact-card">
+        <span class="contact-icon">💬</span>
+        <span class="contact-label">WhatsApp</span>
+        <span class="contact-val">Vako Marchilashvili</span>
+        <span class="contact-btn">WhatsApp-ი</span>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <strong>Food.online.ge</strong> — საქართველოს საუკეთესო კვებობის შეფასების პლატფორმა<br/>
+  რეკლამა: vmarchilashvili@gmail.com · +995 574 013 698<br/>
+  © 2025 · ყველა უფლება დაცულია
+</footer>
+
+</body>
+</html>

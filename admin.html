@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food.online.ge — Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;700;900&family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --wine:       #7B1F2E;
+      --wine-dark:  #4E0F1A;
+      --gold:       #C9A84C;
+      --gold-light: #E8C96A;
+      --cream:      #FAF6EE;
+      --cream-dark: #F0EAE0;
+      --text:       #1A0A0E;
+      --text-muted: #6B4E56;
+      --border:     rgba(123,31,46,0.15);
+      --shadow:     0 8px 40px rgba(78,15,26,0.12);
+      --radius:     14px;
+    }
+    body {
+      font-family: 'Noto Sans Georgian', sans-serif;
+      background: var(--cream); color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      background: var(--wine-dark);
+      padding: 0 2rem; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+    .logo {
+      font-family: 'Noto Serif Georgian', serif;
+      font-weight: 900; font-size: 1.1rem;
+      color: var(--gold-light);
+    }
+    .admin-badge {
+      background: var(--gold); color: var(--wine-dark);
+      font-size: 0.75rem; font-weight: 700;
+      padding: 0.25rem 0.75rem; border-radius: 20px;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* ლოგინი */
+    .login-wrap {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 80vh;
+    }
+    .login-box {
+      background: white; border-radius: var(--radius);
+      padding: 2.5rem; text-align: center;
+      box-shadow: var(--shadow); border: 1px solid var(--border);
+      max-width: 360px; width: 100%;
+    }
+    .login-box h2 {
+      font-family: 'Noto Serif Georgian', serif;
+      color: var(--wine-dark); margin-bottom: 0.5rem; font-size: 1.3rem;
+    }
+    .login-box p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+    .google-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+      width: 100%; padding: 0.85rem;
+      background: white; border: 2px solid #ddd; border-radius: 10px;
+      cursor: pointer; font-family: 'Noto Sans Georgian', sans-serif;
+      font-size: 0.9rem; font-weight: 700; color: #333; transition: all 0.2s;
+    }
+    .google-btn:hover { border-color: #4285f4; box-shadow: 0 2px 12px rgba(66,133,244,0.2); }
+
+    /* სტატისტიკა */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: white; border-radius: var(--radius);
+      padding: 1.25rem; text-align: center;
+      box-shadow: var(--shadow); border: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 2rem; font-weight: 900; color: var(--wine);
+    }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; margin-top: 0.25rem; }
+
+    /* ფილტრები */
+    .filters {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      border: 2px solid var(--border); border-radius: 20px;
+      cursor: pointer; font-size: 0.82rem; font-weight: 700;
+      font-family: 'Noto Sans Georgian', sans-serif;
+      color: var(--text-muted); background: white; transition: all 0.18s;
+    }
+    .filter-btn:hover  { border-color: var(--wine); color: var(--wine); }
+    .filter-btn.active { background: var(--wine); border-color: var(--wine); color: white; }
+
+    /* მოთხოვნის ბარათი */
+    .req-card {
+      background: white; border-radius: var(--radius);
+      border: 2px solid var(--border); padding: 1.25rem 1.5rem;
+      margin-bottom: 0.85rem; box-shadow: 0 2px 12px rgba(78,15,26,0.06);
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; align-items: center;
+    }
+    .req-card.done   { border-color: #a5d6a7; background: #f1f8f1; opacity: 0.7; }
+    .req-card.rejected { border-color: #ffcdd2; background: #fff5f5; opacity: 0.6; }
+    .req-top {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.4rem; flex-wrap: wrap;
+    }
+    .req-rest {
+      font-family: 'Noto Serif Georgian', serif;
+      font-weight: 700; font-size: 1rem; color: var(--wine-dark);
+    }
+    .req-cuisine {
+      font-size: 0.72rem; font-weight: 700;
+      padding: 0.15rem 0.6rem; border-radius: 10px;
+      background: var(--cream-dark); color: var(--text-muted);
+    }
+    .req-dish {
+      font-size: 1rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .req-meta {
+      font-size: 0.75rem; color: var(--text-muted);
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .req-actions { display: flex; flex-direction: column; gap: 0.5rem; }
+    .btn-done {
+      padding: 0.5rem 1rem;
+      background: #2e7d32; color: white;
+      border: none; border-radius: 8px;
+      font-family: 'Noto Sans Georgian', sans-serif;
+      font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .btn-done:hover { background: #1b5e20; }
+    .btn-reject {
+      padding: 0.5rem 1rem;
+      background: #c62828; color: white;
+      border: none; border-radius: 8px;
+      font-family: 'Noto Sans Georgian', sans-serif;
+      font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .btn-reject:hover { background: #b71c1c; }
+    .status-badge {
+      display: inline-block; padding: 0.2rem 0.6rem;
+      border-radius: 10px; font-size: 0.72rem; font-weight: 700;
+    }
+    .status-pending  { background: #fff8e1; color: #f57f17; }
+    .status-done     { background: #e8f5e9; color: #2e7d32; }
+    .status-rejected { background: #fce4ec; color: #c62828; }
+
+    .empty { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 0.95rem; }
+    .section-title {
+      font-family: 'Noto Serif Georgian', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--wine-dark); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .hidden { display: none !important; }
+    #access-denied {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 80vh; text-align: center;
+    }
+    .denied-box {
+      background: white; border-radius: var(--radius);
+      padding: 3rem; box-shadow: var(--shadow);
+      border: 2px solid #ffcdd2;
+    }
+    .denied-box h2 { color: #c62828; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .denied-box p  { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍽️ Georgian Bites</div>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <span id="admin-email" style="color:rgba(250,246,238,0.6);font-size:0.78rem"></span>
+    <div class="admin-badge">🔐 Admin Panel</div>
+    <button id="logout-btn" class="hidden" onclick="handleLogout()" style="
+      padding:0.35rem 0.85rem;
+      background:rgba(255,255,255,0.1);
+      color:white; border:1px solid rgba(255,255,255,0.2);
+      border-radius:8px; cursor:pointer;
+      font-family:'Noto Sans Georgian',sans-serif;
+      font-size:0.78rem; font-weight:700;
+    ">🚪 გამოსვლა</button>
+  </div>
+</header>
+
+<!-- ლოგინი -->
+<div id="login-section">
+  <div class="login-wrap">
+    <div class="login-box">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem">🔐</div>
+      <h2>Admin შესვლა</h2>
+      <p>Georgian Bites ადმინ პანელი — მხოლოდ ავტორიზებული მომხმარებლისთვის</p>
+      <button class="google-btn" id="login-btn">
+        <svg width="20" height="20" viewBox="0 0 48 48">
+          <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+          <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+          <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+          <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.29-8.16 2.29-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        Google-ით შესვლა
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- წვდომა აკრძალულია -->
+<div id="access-denied" class="hidden">
+  <div class="denied-box">
+    <h2>🚫 წვდომა აკრძალულია</h2>
+    <p>ეს გვერდი მხოლოდ ადმინისთვისაა.</p>
+  </div>
+</div>
+
+<!-- Admin კონტენტი -->
+<div id="admin-content" class="hidden">
+  <div class="container">
+
+    <!-- სტატისტიკა -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-pending">0</div>
+        <div class="stat-label">⏳ მოლოდინში</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-done">0</div>
+        <div class="stat-label">✅ დამატებული</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-label">📋 სულ მოთხოვნა</div>
+      </div>
+    </div>
+
+    <!-- ფილტრები -->
+    <div class="filters">
+      <button class="filter-btn active" onclick="setFilter('all', this)">📋 ყველა</button>
+      <button class="filter-btn" onclick="setFilter('pending', this)">⏳ მოლოდინში</button>
+      <button class="filter-btn" onclick="setFilter('done', this)">✅ დამატებული</button>
+      <button class="filter-btn" onclick="setFilter('rejected', this)">❌ უარყოფილი</button>
+      <button class="filter-btn" onclick="setFilter('georgian', this)">🇬🇪 ქართული</button>
+      <button class="filter-btn" onclick="setFilter('burger', this)">🍔 ბურგერი</button>
+      <button class="filter-btn" onclick="setFilter('shawarma', this)">🌯 შაურმა</button>
+      <button class="filter-btn" onclick="setFilter('asian', this)">🍣 აზიური</button>
+    </div>
+
+    <!-- სია -->
+    <div class="section-title">📩 პროდუქტის მოთხოვნები</div>
+    <div id="requests-list">
+      <div class="empty">⏳ იტვირთება...</div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+import {
+  getFirestore, collection, getDocs, doc, updateDoc,
+  query, orderBy
+} from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
+import {
+  getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+import {
+  initializeAppCheck, ReCaptchaV3Provider
+} from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app-check.js";
+  const ADMIN_UIDS = ['N9esSlLmfKUX3quJdoQxnxVJlQp1','X5z3bAEjnTUjLGAJ47RiKHUbwHI3'];
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAliuB2GqRm0s1U-2KuGVp6I0WThigGxPA",
+    authDomain: "georgian-bites.firebaseapp.com",
+    projectId: "georgian-bites",
+    storageBucket: "georgian-bites.firebasestorage.app",
+    messagingSenderId: "485486300439",
+    appId: "1:485486300439:web:21b211402b2e8be6e1bb52"
+  };
+
+  const app      = initializeApp(firebaseConfig);
+  const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaV3Provider('6LeeXZEsAAAAAJTMFMb_n9QB6NnvsouVMT3x91rM'),
+  isTokenAutoRefreshEnabled: true
+});
+  const db       = getFirestore(app);
+  const auth     = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  let allRequests = [];
+  let activeFilter = 'all';
+
+  const cuisineLabel = {
+    georgian: '🇬🇪 ქართული',
+    burger:   '🍔 ბურგერი',
+    shawarma: '🌯 შაურმა',
+    asian:    '🍣 აზიური',
+  };
+
+  // Auth
+  onAuthStateChanged(auth, user => {
+  if (!user) {
+    document.getElementById('login-section').classList.remove('hidden');
+    document.getElementById('admin-content').classList.add('hidden');
+    document.getElementById('access-denied').classList.add('hidden');
+    document.getElementById('logout-btn').classList.add('hidden');
+    document.getElementById('admin-email').textContent = '';
+    return;
+  }
+  document.getElementById('login-section').classList.add('hidden');
+  document.getElementById('logout-btn').classList.remove('hidden');
+  document.getElementById('admin-email').textContent = user.email;
+
+ if (!ADMIN_UIDS.includes(user.uid)) {
+    document.getElementById('access-denied').classList.remove('hidden');
+    return;
+  }
+  document.getElementById('admin-content').classList.remove('hidden');
+  loadRequests();
+});
+
+  document.getElementById('login-btn').onclick = async () => {
+    try { await signInWithPopup(auth, provider); }
+    catch(e) { console.error(e); }
+  };
+
+  // მოთხოვნების ჩატვირთვა
+  async function loadRequests() {
+    try {
+      const q    = query(collection(db, 'product_requests'), orderBy('createdAt', 'desc'));
+      const snap = await getDocs(q);
+      allRequests = snap.docs.map(d => ({ docId: d.id, ...d.data() }));
+      updateStats();
+      renderRequests();
+    } catch(e) {
+      console.error(e);
+      document.getElementById('requests-list').innerHTML =
+        '<div class="empty">⚠️ შეცდომა მონაცემების ჩატვირთვისას</div>';
+    }
+  }
+
+  function updateStats() {
+    const pending  = allRequests.filter(r => r.status === 'pending').length;
+    const done     = allRequests.filter(r => r.status === 'done').length;
+    document.getElementById('stat-pending').textContent = pending;
+    document.getElementById('stat-done').textContent    = done;
+    document.getElementById('stat-total').textContent   = allRequests.length;
+  }
+
+  function renderRequests() {
+    const list = document.getElementById('requests-list');
+    const statusFilters  = ['pending','done','rejected'];
+    const cuisineFilters = ['georgian','burger','shawarma','asian'];
+
+    let filtered = allRequests;
+    if (statusFilters.includes(activeFilter)) {
+      filtered = allRequests.filter(r => r.status === activeFilter);
+    } else if (cuisineFilters.includes(activeFilter)) {
+      filtered = allRequests.filter(r => r.cuisine === activeFilter);
+    }
+
+    if (!filtered.length) {
+      list.innerHTML = '<div class="empty">📭 მოთხოვნა არ არის</div>';
+      return;
+    }
+
+    list.innerHTML = '';
+    filtered.forEach(req => {
+      const date = req.createdAt?.toDate
+        ? req.createdAt.toDate().toLocaleDateString('ka-GE')
+        : '—';
+      const statusClass = req.status === 'done' ? 'done' : req.status === 'rejected' ? 'rejected' : '';
+      const statusBadge = req.status === 'done'
+        ? '<span class="status-badge status-done">✅ დამატებული</span>'
+        : req.status === 'rejected'
+        ? '<span class="status-badge status-rejected">❌ უარყოფილი</span>'
+        : '<span class="status-badge status-pending">⏳ მოლოდინში</span>';
+
+      const actions = req.status === 'pending' ? `
+        <button class="btn-done"   onclick="markStatus('${req.docId}','done')">✅ დავამატე</button>
+        <button class="btn-reject" onclick="markStatus('${req.docId}','rejected')">❌ უარვყავი</button>
+      ` : `<button class="btn-done" style="background:#888;cursor:default" disabled>განხილულია</button>`;
+
+      const isRest = req.type === 'restaurant';
+
+      list.innerHTML += `
+        <div class="req-card ${statusClass}" id="card-${req.docId}">
+          <div>
+            <div class="req-top">
+              <span class="req-rest">${isRest ? '🏠 რესტორნის მოთხოვნა' : req.restName || '—'}</span>
+              <span class="req-cuisine">${cuisineLabel[req.cuisine] || req.cuisine || '—'}</span>
+              ${statusBadge}
+            </div>
+            <div class="req-dish">${isRest ? req.restName : `🍽️ ${req.dishName}`}</div>
+            <div class="req-meta">
+              <span>📂 ${isRest ? 'რესტორანი' : req.category || '—'}</span>
+              <span>👤 ${req.userName || req.userEmail || '—'}</span>
+              <span>📅 ${date}</span>
+            </div>
+          </div>
+          <div class="req-actions">${actions}</div>
+        </div>`;
+    });
+  }
+
+  // სტატუსის შეცვლა
+  window.markStatus = async (docId, status) => {
+    try {
+      await updateDoc(doc(db, 'product_requests', docId), { status });
+      const req = allRequests.find(r => r.docId === docId);
+      if (req) req.status = status;
+      updateStats();
+      renderRequests();
+    } catch(e) { console.error(e); alert('შეცდომა!'); }
+  };
+window.handleLogout = async () => {
+  await signOut(auth);
+};
+
+  // ფილტრი
+  window.setFilter = (filter, el) => {
+    activeFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    renderRequests();
+  };
+</script>
+</body>
+</html>
