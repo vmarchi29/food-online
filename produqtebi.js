@@ -642,6 +642,24 @@ onAuthStateChanged(auth, user => {
 }); 
 async function signInGoogle() {
   try {
+    // In-App Browser შემოწმება (Facebook, Messenger, Instagram, Telegram...)
+    const ua = navigator.userAgent;
+    const isInAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger|WebView|wv/i.test(ua);
+    
+    if (isInAppBrowser) {
+      const isAndroid = /Android/i.test(ua);
+      const isIOS = /iPhone|iPad|iPod/i.test(ua);
+      
+      if (isAndroid) {
+        alert('გთხოვ გახსენი Chrome-ში:\nქვედა მენიუ (⋮) → "Chrome-ში გახსნა"');
+      } else if (isIOS) {
+        alert('გთხოვ გახსენი Safari-ში:\nქვედა მენიუ → "Safari-ში გახსნა"');
+      } else {
+        alert('გთხოვ გახსენი ბრაუზერში და სცადე თავიდან');
+      }
+      return;
+    }
+
     await setPersistence(auth, browserLocalPersistence);
     await signInWithPopup(auth, provider);
     closeLogin();
@@ -649,7 +667,7 @@ async function signInGoogle() {
   } catch(e) { 
     console.error('Auth error:', e.code, e.message);
     if (e.code === 'auth/popup-blocked') {
-      alert('გთხოვ დაუშვა Popup — Safari-ს პარამეტრებში:\nSettings → Safari → Block Pop-ups → გამორთე');
+      alert('Popup დაიბლოკა! გთხოვ დაუშვა popup ამ საიტზე');
     }
   }
   if (window._pendingFavs) { window._pendingFavs = false; showPage('favs'); }
