@@ -641,12 +641,17 @@ onAuthStateChanged(auth, user => {
 }); 
 async function signInGoogle() {
   try {
+    await setPersistence(auth, browserLocalPersistence); 
     await signInWithPopup(auth, provider);
     closeLogin();
-    // თუ review გვერდზე გადასვლა ელოდებოდა
     if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
-  } catch(e) { console.error(e); }
-  if (window._pendingFavs) { window._pendingFavs=false; showPage('favs'); }
+  } catch(e) { 
+    console.error('Auth error:', e.code, e.message);
+    if (e.code === 'auth/popup-blocked') {
+      alert('Popup დაიბლოკა! გთხოვ დაუშვა popup ამ საიტზე.');
+    }
+  }
+  if (window._pendingFavs) { window._pendingFavs = false; showPage('favs'); }
 }
  
 function handleAuth() {
