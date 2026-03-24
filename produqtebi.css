@@ -1145,7 +1145,42 @@
   .ad-banner-inner {
     padding: 1.2rem 1rem;
     gap: 1rem;
+  } 
+  .ad-banner-wrap {
+    display: none;
   }
+ .mobile-ads {
+    display: none !important;
+  }
+ .rest-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.6rem !important;
+  }
+  .rest-card {
+    padding: 0.75rem 0.6rem !important;
+    font-size: 0.8rem !important;
+  }
+  .rest-card-icon {
+    font-size: 1.4rem !important;
+  }
+  .rest-card-name {
+    font-size: 0.78rem !important;
+  }
+  .rest-card-sub {
+    font-size: 0.65rem !important;
+  }
+
+  /* header მობილურზე */
+  .header-inner {
+    padding: 0 1rem !important;
+  }
+  .tab-text {
+    display: none !important;
+  }
+  .nav-tab {
+    padding: 0.5rem 0.75rem !important;
+  }
+}
   .ad-banner-emoji { font-size: 2rem; }
   .ad-banner-title { font-size: 0.88rem; }
   .ad-banner-btn {
