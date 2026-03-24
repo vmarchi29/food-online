@@ -1,7 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
-  getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
-  setPersistence, browserLocalPersistence  
+  getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, 
+  getRedirectResult, signOut, onAuthStateChanged,
+  setPersistence, browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {
   getFirestore, collection, addDoc, getDocs,
@@ -641,16 +642,21 @@ onAuthStateChanged(auth, user => {
 }); 
 async function signInGoogle() {
   try {
-    auth.useDeviceLanguage();
     await setPersistence(auth, browserLocalPersistence);
-    const result = await signInWithPopup(auth, provider);
-    closeLogin();
-    if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
+    
+    // iPhone/Safari-ზე redirect, სხვაზე popup
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    
+    if (isIOS || isSafari) {
+      await signInWithRedirect(auth, provider);
+    } else {
+      await signInWithPopup(auth, provider);
+      closeLogin();
+      if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
+    }
   } catch(e) { 
     console.error('Auth error:', e.code, e.message);
-    if (e.code === 'auth/popup-blocked') {
-      alert('გთხოვ დაუშვა Popup ამ საიტზე — მისამართების ზოლში დააჭირე popup-ის ნებართვას');
-    }
   }
   if (window._pendingFavs) { window._pendingFavs = false; showPage('favs'); }
 }
