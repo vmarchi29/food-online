@@ -21,7 +21,11 @@ const firebaseConfig = {
 const app      = initializeApp(firebaseConfig);
 const db       = getFirestore(app);
 const auth     = getAuth(app);
+auth.useDeviceLanguage(); 
 const provider = new GoogleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account'  // ← ეს დაამატე
+});
 let currentUser = null;
 let userFavs = [];
 
