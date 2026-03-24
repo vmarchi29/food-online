@@ -641,14 +641,15 @@ onAuthStateChanged(auth, user => {
 }); 
 async function signInGoogle() {
   try {
-    await setPersistence(auth, browserLocalPersistence); 
-    await signInWithPopup(auth, provider);
+    auth.useDeviceLanguage();
+    await setPersistence(auth, browserLocalPersistence);
+    const result = await signInWithPopup(auth, provider);
     closeLogin();
     if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
   } catch(e) { 
     console.error('Auth error:', e.code, e.message);
     if (e.code === 'auth/popup-blocked') {
-      alert('Popup დაიბლოკა! გთხოვ დაუშვა popup ამ საიტზე.');
+      alert('გთხოვ დაუშვა Popup ამ საიტზე — მისამართების ზოლში დააჭირე popup-ის ნებართვას');
     }
   }
   if (window._pendingFavs) { window._pendingFavs = false; showPage('favs'); }
