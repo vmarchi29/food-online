@@ -534,7 +534,7 @@ const RESTAURANTS = [
   { id:189, name:'Elita Shawarma',     nameEn:'Elita Shawarma',         icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Elita+Shawarma+თბილისი' },
   { id:198, name:'შაურმაფია',          nameEn:'Shawarmaphia',           icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shawarmaphia+თბილისი' },
   { id:210, name:'სოულ შაურმა',        nameEn:'Soul Shawarma',          icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Soul+Shawarma+თბილისი' },
-  { id:208, name:'ვრაპ მასტერი',        nameEn:'Wrap Master',            icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Wrap+Master+თბილისი'  
+  { id:208, name:'ვრაპ მასტერი',        nameEn:'Wrap Master',            icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Wrap+Master+თბილისი'  ,
    extraDishes:{'შაურმა':['კლასიკური ქათმის ვრაპი','კლასიკური საქონლის ვრაპი','ტრუფელი ქათმის ვრაპი','მექსიკური ქათმის ვრაპი','ნაჩოს ქათმის ვრაპი ცხარე','არაჟნის ქათმის ვრაპი','ნაჩოს საქონლის ვრაპი','ლურჯი ყველის ქათმის ვრაპი',
   'კოულ სლოუ ქათმის ვრაპი','აჯიკა ქათმის ვრაპი ცხარე','რიო ქათმის ვრაპი','ლურჯი  ყველის საქონლის ვრაპი','მაკ ქათმის ვრაპი',
       'ტერიაკი ქათმის ვრაპი','სრირაჩა ქათმის ვრაპი ცხარე','კარი ქათმის ვრაპი ცხარე','ბარბექიუს ქათმის ვრაპი','აჯიკა ვეგეტარიანული ვრაპი ცხარე','ტერიაკი ვეგეტარიანული ვრაპი ცხარე','კოულ სლოუ ვეგეტარიანული ვრაპი ცხარე'
