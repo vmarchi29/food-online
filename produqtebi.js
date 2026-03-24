@@ -11,7 +11,7 @@ import {
 
 const firebaseConfig = {
   apiKey: "AIzaSyAliuB2GqRm0s1U-2KuGVp6I0WThigGxPA",
-  authDomain: "georgian-bites.firebaseapp.com",
+  authDomain: "vmarchi29.github.io",
   projectId: "georgian-bites",
   storageBucket: "georgian-bites.firebasestorage.app",
   messagingSenderId: "485486300439",
