@@ -113,7 +113,7 @@ const MENUS = {
       'მარწყვი დაშაქრული','ნაყინი','ტორტი',
       'მიწის თხილი','ბრაუნი','ბელგიური ვაფლი','ნაპოლეონი',
       'მერინგის რულეტი','შუ','ეკლერი','ნამცხვარი იდეალი','ნამცხვარი მედოკი',
-      'ნამცხვარი ჩიტის რძე','ნამცხვარი ციყვი','ტარტალეტკა',
+      'ნამცხვარი ჩიტის რძე','ნამცხვარი ციყვი','ტარტალეტკა','ჩიზქეიქი','ტირამისუ',
     ],
     'გამაგრილებელი სასმელები': [
       'გაზიანი გამაგრილებელი სასმელი','წყენი ხილის','რედბული',
@@ -524,7 +524,8 @@ const RESTAURANTS = [
   { id:97,  name:'სტრიტ შეფი',         nameEn:'Street Chef',            icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Street+Chef+თბილისი' },
   { id:105, name:'ტიფლისი შაურმა',     nameEn:'Tiflisi Shawarma',       icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Tiflisi+Shawarma+თბილისი' },
   { id:107, name:'შაურუმი',            nameEn:'Shaurumi',               icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shaurumi+თბილისი' },
-  { id:108, name:'კრაფტ ფუდი',         nameEn:'Craft Food',             icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Craft+Food+თბილისი' },
+  { id:108, name:'კრაფტ ფუდი',         nameEn:'Craft Food',             icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Craft+Food+თბილისი'
+  extraDishes:{'შაურმა':['შაურმა ჩედარის სოუსით']}},
   { id:116, name:'შაურმანიაკი',        nameEn:'Shaurmaniac',            icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shaurmaniac+თბილისი' },
   { id:117, name:'შაურმა ქლაბი',       nameEn:'Shawarma Club',          icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shawarma+Club+თბილისი' },
   { id:122, name:'გლდანის შაურმა',     nameEn:'Gldani Shawarma',        icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Gldani+Shawarma+თბილისი' },
