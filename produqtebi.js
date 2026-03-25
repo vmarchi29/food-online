@@ -294,7 +294,7 @@ const MENUS = {
 
 };
 
-/* ═══ MENU — backward compat (georgian კუზინისთვის) ═══ */
+/* ═══ MENU — backward compat (georgian სთვის) ═══ */
 const MENU = MENUS.georgian;
  
 const CAT_ICON = {
@@ -1191,7 +1191,7 @@ function selectRestCard(el, r) {
   el.classList.add('selected');
   selectedRest = r;
   document.getElementById('rv-next1').disabled = false;
-  // კუზინის მიხედვით კატეგორიები გადავაწყოთ
+  // ს მიხედვით კატეგორიები გადავაწყოთ
   selectedCat = null;
   document.getElementById('cat-grid').innerHTML = '';
   document.getElementById('dish-buttons').innerHTML = '';
@@ -1531,7 +1531,7 @@ async function submitRestRequest() {
   if (!currentUser) { openLogin(); return; }
   const name = document.getElementById('rest-req-name').value.trim();
   if (!name) { alert('რესტორნის სახელი შეავსე!'); return; }
-  if (!restReqCuisine) { alert('კუზინი აირჩიე!'); return; }
+  if (!restReqCuisine) { alert('სამზარეულო აირჩიე!'); return; }
   const btn = document.querySelector('[onclick="submitRestRequest()"]');
   btn.disabled = true; btn.textContent = '⏳...';
   try {
