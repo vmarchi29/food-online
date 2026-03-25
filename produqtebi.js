@@ -1,8 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
-  getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, 
-  getRedirectResult, signOut, onAuthStateChanged,
-  setPersistence, browserLocalPersistence
+  getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {
   getFirestore, collection, addDoc, getDocs,
@@ -23,11 +21,7 @@ const firebaseConfig = {
 const app      = initializeApp(firebaseConfig);
 const db       = getFirestore(app);
 const auth     = getAuth(app);
-auth.useDeviceLanguage(); 
 const provider = new GoogleAuthProvider();
-provider.setCustomParameters({
-  prompt: 'select_account'  // ← ეს დაამატე
-});
 let currentUser = null;
 let userFavs = [];
 
@@ -642,33 +636,12 @@ onAuthStateChanged(auth, user => {
 }); 
 async function signInGoogle() {
   try {
-    const ua = navigator.userAgent;
-    const isInAppBrowser = /FBAN|FBAV|FB_IAB|Instagram|Messenger|WebView|wv/i.test(ua);
-    
-    if (isInAppBrowser) {
-      const currentUrl = window.location.href;
-      const isAndroid = /Android/i.test(ua);
-      const isIOS = /iPhone|iPad|iPod/i.test(ua);
-      
-      if (isAndroid) {
-        window.open('intent://' + currentUrl.replace(/https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end', '_blank');
-      } else if (isIOS) {
-        window.location.href = currentUrl.replace('https://', 'googlechrome://');
-      }
-      return;
-    }
-
-    await setPersistence(auth, browserLocalPersistence);
     await signInWithPopup(auth, provider);
     closeLogin();
+    // თუ review გვერდზე გადასვლა ელოდებოდა
     if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
-  } catch(e) { 
-    console.error('Auth error:', e.code, e.message);
-    if (e.code === 'auth/popup-blocked') {
-      alert('Popup დაიბლოკა! გთხოვ დაუშვა popup ამ საიტზე');
-    }
-  }
-  if (window._pendingFavs) { window._pendingFavs = false; showPage('favs'); }
+  } catch(e) { console.error(e); }
+  if (window._pendingFavs) { window._pendingFavs=false; showPage('favs'); }
 }
  
 function handleAuth() {
@@ -848,6 +821,9 @@ function showPage(id) {
   document.getElementById('page-'+id).classList.add('active');
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
+  const adBanner = document.getElementById('ad-banner-main');
+  if (adBanner) adBanner.style.display = id === 'search' ? '' : 'none';
+
   const titles = { search:'საკვებისა და რესტორნის ძებნა', review:'შეფასება', favs:'ჩემი ფავორიტები' };
   const subs   = { search:'მოძებნე საჭმელი ან რესტორანი', review:'შეაფასე ის რაც ჭამე', favs:'შენახული კერძები და რესტორნები' };
   document.getElementById('hero-title').textContent = titles[id];
@@ -1505,17 +1481,7 @@ function resetReview() {
   document.querySelectorAll('.mini-comment').forEach(t=>t.value='');
   goStep(1);
 }
- // ← ეს დაამატე INIT ბლოკამდე
-getRedirectResult(auth).then(result => {
-  if (result?.user) {
-    closeLogin();
-    if (window._pendingReview) { window._pendingReview = false; showPage('review'); }
-    if (window._pendingFavs)   { window._pendingFavs = false; showPage('favs'); }
-  }
-}).catch(e => console.error(e));
-
-/* ══ INIT ══ */
-buildRestGrid(); buildCategoryGrid(); buildFoodCatGrid(); buildStarRows(); loadReviews();
+ 
 /* ══ INIT ══ */
 buildRestGrid(); buildCategoryGrid(); buildFoodCatGrid(); buildStarRows(); loadReviews();
 
@@ -1670,3 +1636,23 @@ window.setDishStar=setDishStar; window.removeDish=removeDish;
 window.setStarField=setStarField; window.selectPill=selectPill;
 window.goStep=goStep; window.submitReview=submitReview; window.resetReview=resetReview;
 window.requireAuthFavs=requireAuthFavs; window.toggleFav=toggleFav; window.toggleComments=toggleComments;
+
+// ══ რეკლამების სლაიდერი ══
+function initAdSlider() {
+  const cards = document.querySelectorAll('.mobile-ad-card');
+  if (!cards.length) return;
+  let current = 0;
+  cards.forEach((c, i) => c.style.display = i === 0 ? '' : 'none');
+  
+  setInterval(() => {
+    cards[current].style.animation = 'slideOutLeft 0.4s forwards';
+    setTimeout(() => {
+      cards[current].style.display = 'none';
+      cards[current].style.animation = '';
+      current = (current + 1) % cards.length;
+      cards[current].style.display = '';
+      cards[current].style.animation = 'slideInRight 0.4s forwards';
+    }, 400);
+  }, 3000);
+}
+initAdSlider();
