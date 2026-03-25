@@ -477,7 +477,7 @@ const RESTAURANTS = [
   { id:205, name:'პასტა მანია',        nameEn:'Pasta Mania',            icon:'🍝', cuisine:'georgian', maps:'https://www.google.com/maps/search/Pasta+Mania+თბილისი' },
   { id:207, name:'ტერემოკი',           nameEn:'Teremok',                icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Teremok+თბილისი' },
   { id:290, name:'ბიკენტიას საქაბაბე',           nameEn:'bikentias sakababe',                icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Bykentia+Sakababe/@41.7285423,44.7803046,17z/data=!3m1!4b1!4m6!3m5!1s0x404473a71a736d03:0x8ca5cb6131270df3!8m2!3d41.7285423!4d44.7828795!16s%2Fg%2F11pdmdd2rq?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D' },
-
+  { id:291, name:'თაობა', nameEn:'taoba', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Taoba+Cafe+%C2%B7+%E1%83%97%E1%83%90%E1%83%9D%E1%83%91%E1%83%90/@41.7086815,44.796456,16.75z/data=!4m6!3m5!1s0x40440dd2397f28cb:0x5ff3b34bba0b77ea!8m2!3d41.7086543!4d44.7992908!16s%2Fg%2F11yszz_vgn?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
 
   // ══ ბურგერები ══
   { id:91,  name:'ბურგერ ჰაუსი',      nameEn:'Burger House',           icon:'🍔', cuisine:'burger', maps:'https://www.google.com/maps/search/Burger+House+თბილისი' },
