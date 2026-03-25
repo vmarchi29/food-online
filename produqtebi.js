@@ -478,7 +478,12 @@ const RESTAURANTS = [
   { id:207, name:'ტერემოკი',           nameEn:'Teremok',                icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Teremok+თბილისი' },
   { id:290, name:'ბიკენტიას საქაბაბე',           nameEn:'bikentias sakababe',                icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Bykentia+Sakababe/@41.7285423,44.7803046,17z/data=!3m1!4b1!4m6!3m5!1s0x404473a71a736d03:0x8ca5cb6131270df3!8m2!3d41.7285423!4d44.7828795!16s%2Fg%2F11pdmdd2rq?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D' },
   { id:291, name:'თაობა', nameEn:'taoba', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Taoba+Cafe+%C2%B7+%E1%83%97%E1%83%90%E1%83%9D%E1%83%91%E1%83%90/@41.7086815,44.796456,16.75z/data=!4m6!3m5!1s0x40440dd2397f28cb:0x5ff3b34bba0b77ea!8m2!3d41.7086543!4d44.7992908!16s%2Fg%2F11yszz_vgn?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
-
+  { id:292, name:'პიცა დი რომა', nameEn:'pizza di roma', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Pizza+Di+Roma/@41.7626144,44.7468576,13z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
+  { id:294, name:'ლისი მერე', nameEn:'lisi mere', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Lisi+Mere/@41.7490968,44.6827204,17z/data=!3m1!4b1!4m6!3m5!1s0x404473d22f726ca1:0x29a77e334817e08e!8m2!3d41.7490968!4d44.6852953!16s%2Fg%2F11fb0849g8?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
+  { id:295, name:'სქაი 360', nameEn:'sky 360', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/360+Sky+Bar/@41.6509259,41.6277069,17z/data=!3m1!4b1!4m6!3m5!1s0x40678641e74f591f:0xafdf7f7f4b9ad78d!8m2!3d41.6509259!4d41.6302818!16s%2Fg%2F11g8_30s1h?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
+  { id:296, name:'era hall', nameEn:'era hall', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Era+hall+Sanapiro/@41.7383407,44.7701616,17z/data=!3m1!4b1!4m6!3m5!1s0x404473a44c99e637:0x3e0b2c4165234092!8m2!3d41.7383407!4d44.7727365!16s%2Fg%2F11s8llfvsz?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
+  
+  
   // ══ ბურგერები ══
   { id:91,  name:'ბურგერ ჰაუსი',      nameEn:'Burger House',           icon:'🍔', cuisine:'burger', maps:'https://www.google.com/maps/search/Burger+House+თბილისი' },
   { id:92,  name:'სმეშ ბარი',          nameEn:'Smash Bar',              icon:'🍔', cuisine:'burger', maps:'https://www.google.com/maps/search/Smash+Bar+თბილისი' },
@@ -561,7 +566,7 @@ const RESTAURANTS = [
   { id:263, name:'ცომბინათი',                 nameEn:'Tsombinati',                icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Tsombinati+თბილისი' },
   { id:264, name:'ტაუკი',                      nameEn:'Tauk',                      icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Tauk+Shawarma+თბილისი' },
   { id:265, name:'Maq Shawarma',              nameEn:'Maq Shawarma',              icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Maq+Shawarma+თბილისი' },
-
+  { id:293, name:'ბლექ შაურმა', nameEn:'black shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://www.google.com/maps/place/Black+Shawarma+Gldani/@41.7625997,44.7468575,13z/data=!4m10!1m2!2m1!1sblack+shawarma!3m6!1s0x40446d2a78b7181f:0x98ad3c89676010eb!8m2!3d41.793462!4d44.8124197!15sCg5ibGFjayBzaGF3YXJtYVoQIg5ibGFjayBzaGF3YXJtYZIBFGZhc3RfZm9vZF9yZXN0YXVyYW504AEA!16s%2Fg%2F11txy1b_1y?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
   // ══ აზიური ══
   { id:98,  name:'სუში ბარი',          nameEn:'Sushi Bar',              icon:'🍣', cuisine:'asian', maps:'https://www.google.com/maps/search/Sushi+Bar+თბილისი' },
   { id:99,  name:'ტოკიო გარდენი',      nameEn:'Tokyo Garden',           icon:'🍱', cuisine:'asian', maps:'https://www.google.com/maps/search/Tokyo+Garden+თბილისი' },
