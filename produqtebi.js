@@ -916,6 +916,7 @@ function toggleFoodCat(el, cat) {
   });
 
   dishWrap.classList.remove('hidden');
+  dishWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
   renderFoodResults();
 }
  
