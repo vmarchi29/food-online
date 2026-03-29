@@ -1196,6 +1196,7 @@ function selectRestCard(el, r) {
   document.getElementById('cat-grid').innerHTML = '';
   document.getElementById('dish-buttons').innerHTML = '';
   document.getElementById('dish-buttons-wrap').classList.add('hidden');
+  document.getElementById('rv-next1').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
  
 /* კატეგორია → კერძი */
