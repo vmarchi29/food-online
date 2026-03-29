@@ -916,7 +916,6 @@ function toggleFoodCat(el, cat) {
   });
 
   dishWrap.classList.remove('hidden');
-  dishWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
   renderFoodResults();
 }
  
@@ -1219,6 +1218,7 @@ function selectCategory(el,cat) {
   el.classList.add('active'); selectedCat=cat;
   renderDishButtons(cat);
   document.getElementById('dish-buttons-wrap').classList.remove('hidden');
+  document.getElementById('dish-buttons-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
  
 function renderDishButtons(cat) {
