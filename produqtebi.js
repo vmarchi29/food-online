@@ -483,6 +483,9 @@ const RESTAURANTS = [
   { id:294, name:'ლისი მერე', nameEn:'lisi mere', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Lisi+Mere/@41.7490968,44.6827204,17z/data=!3m1!4b1!4m6!3m5!1s0x404473d22f726ca1:0x29a77e334817e08e!8m2!3d41.7490968!4d44.6852953!16s%2Fg%2F11fb0849g8?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
   { id:295, name:'სქაი 360', nameEn:'sky 360', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/360+Sky+Bar/@41.6509259,41.6277069,17z/data=!3m1!4b1!4m6!3m5!1s0x40678641e74f591f:0xafdf7f7f4b9ad78d!8m2!3d41.6509259!4d41.6302818!16s%2Fg%2F11g8_30s1h?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
   { id:296, name:'era hall', nameEn:'era hall', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/place/Era+hall+Sanapiro/@41.7383407,44.7701616,17z/data=!3m1!4b1!4m6!3m5!1s0x404473a44c99e637:0x3e0b2c4165234092!8m2!3d41.7383407!4d44.7727365!16s%2Fg%2F11s8llfvsz?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
+  { id:297, name:'ხინკლის ფაბრიკა', nameEn:'Khinkali Factory', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Khinkali+Factory/@41.723001,44.7569373,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D' },
+  { id:298, name:'სტრადა', nameEn:'strada', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Strada/@41.708057,44.7896648,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D' },
+
   
   
   // ══ ბურგერები ══
@@ -494,7 +497,8 @@ const RESTAURANTS = [
     extraDishes:{'ბურგერები':['ასტერიქსი','ობელიქსი','გლადიატორი','ლომის ღრიალი','იულიუსი','სტეიკ ბურგერი','ასტეროიდი','ხუთი ყველის ბურგერი','დრუიდი','ევერესტი','სმეშ ბურგერი','ზევსი','სფინქსი',
       'ბიგ მაქსი','ჰალაპენიო ბურგერი','თეთრი ლომი','იდეაფიქს პლიუსი']} },
   { id:138, name:'მაკდონალდსი',        nameEn:"McDonald's",             icon:'🍔', cuisine:'burger', maps:'https://www.google.com/maps/search/McDonalds+თბილისი' },
-  { id:139, name:'ვენდი',              nameEn:"Wendy's",                icon:'🍔', cuisine:'burger', maps:'https://www.google.com/maps/search/Wendys+თბილისი' },
+  { id:139, name:'ვენდი',              nameEn:"Wendy's",                icon:'🍔', cuisine:'burger', maps:'https://www.google.com/maps/search/Wendys+თბილისი', 
+    extraDishes:{'სასმელები':['ფისტის შეიქი']} },
   { id:200, name:'ალ ბაიკი',           nameEn:'Al Baik',                icon:'🍗', cuisine:'burger', maps:'https://www.google.com/maps/search/Al+Baik+თბილისი' },
   { id:266, name:'7G Seven G',           nameEn:'7G Seven G',           icon:'🍔', cuisine:'burger', maps:'https://www.google.com/maps/search/7G+Seven+G+თბილისი' },
   { id:267, name:'KFC',                  nameEn:'KFC',                  icon:'🍗', cuisine:'burger', maps:'https://www.google.com/maps/search/KFC+თბილისი' },
