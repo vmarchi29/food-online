@@ -489,7 +489,7 @@ const RESTAURANTS = [
   { id:297, name:'ხინკლის ფაბრიკა', nameEn:'Khinkali Factory', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Khinkali+Factory/@41.723001,44.7569373,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D' },
   { id:298, name:'სტრადა', nameEn:'strada', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Strada/@41.708057,44.7896648,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D' },
   { id:299, name:'აუგუსტინერ პლაცი', nameEn:'augustiner platz', icon:'🥞', cuisine:'georgian', maps:'https://maps.app.goo.gl/CtKbb4W5GRxu2p728' },
-{ id:300, name:'მაგნოლია', nameEn:'მაგნოლია', icon:'🥞', cuisine:'georgian', maps:'https://maps.app.goo.gl/zHNrQsE6xMUMjd4e9' },
+{ id:300, name:'მაგნოლია', nameEn:'magnolia', icon:'🥞', cuisine:'georgian', maps:'https://maps.app.goo.gl/zHNrQsE6xMUMjd4e9' },
 
   
   
