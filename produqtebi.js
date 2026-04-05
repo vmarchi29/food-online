@@ -489,7 +489,8 @@ const RESTAURANTS = [
   { id:297, name:'ხინკლის ფაბრიკა', nameEn:'Khinkali Factory', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Khinkali+Factory/@41.723001,44.7569373,14z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D' },
   { id:298, name:'სტრადა', nameEn:'strada', icon:'🥞', cuisine:'georgian', maps:'https://www.google.com/maps/search/Strada/@41.708057,44.7896648,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDMyNC4wIKXMDSoASAFQAw%3D%3D' },
   { id:299, name:'აუგუსტინერ პლაცი', nameEn:'augustiner platz', icon:'🥞', cuisine:'georgian', maps:'https://maps.app.goo.gl/CtKbb4W5GRxu2p728' },
-{ id:300, name:'მაგნოლია', nameEn:'magnolia', icon:'🥞', cuisine:'georgian', maps:'https://maps.app.goo.gl/zHNrQsE6xMUMjd4e9' },
+  { id:300, name:'მაგნოლია', nameEn:'magnolia', icon:'🥞', cuisine:'georgian', maps:'https://maps.app.goo.gl/zHNrQsE6xMUMjd4e9' },
+
 
   
   
@@ -535,7 +536,7 @@ const RESTAURANTS = [
   { id:105, name:'ტიფლისი შაურმა',     nameEn:'Tiflisi Shawarma',       icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Tiflisi+Shawarma+თბილისი' },
   { id:107, name:'შაურუმი',            nameEn:'Shaurumi',               icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shaurumi+თბილისი' },
   { id:108, name:'კრაფტ ფუდი',         nameEn:'Craft Food',             icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Craft+Food+თბილისი'},
-  { id:116, name:'შაურმანიაკი',        nameEn:'Shaurmaniac',            icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shaurmaniac+თბილისი' },
+  { id:116, name:'შაურმანიაკი',        nameEn:'Shawarmaniac',            icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shaurmaniac+თბილისი' },
   { id:117, name:'შაურმა ქლაბი',       nameEn:'Shawarma Club',          icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Shawarma+Club+თბილისი' },
   { id:122, name:'გლდანის შაურმა',     nameEn:'Gldani Shawarma',        icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Gldani+Shawarma+თბილისი' },
   { id:123, name:'მაკშაურმა',          nameEn:'Mak Shawarma',           icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Mak+Shawarma+თბილისი' },
@@ -577,6 +578,27 @@ const RESTAURANTS = [
   { id:264, name:'ტაუკი',                      nameEn:'Tauk',                      icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Tauk+Shawarma+თბილისი' },
   { id:265, name:'Maq Shawarma',              nameEn:'Maq Shawarma',              icon:'🌯', cuisine:'shawarma', maps:'https://www.google.com/maps/search/Maq+Shawarma+თბილისი' },
   { id:293, name:'ბლექ შაურმა', nameEn:'black shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://www.google.com/maps/place/Black+Shawarma+Gldani/@41.7625997,44.7468575,13z/data=!4m10!1m2!2m1!1sblack+shawarma!3m6!1s0x40446d2a78b7181f:0x98ad3c89676010eb!8m2!3d41.793462!4d44.8124197!15sCg5ibGFjayBzaGF3YXJtYVoQIg5ibGFjayBzaGF3YXJtYZIBFGZhc3RfZm9vZF9yZXN0YXVyYW504AEA!16s%2Fg%2F11txy1b_1y?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D' },
+  { id:301, name:'პარგო', nameEn:'pargo', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/6ZMjFeAvtnja4NWNA' },
+  { id:302, name:'მისტერ გუსტო შაურმა', nameEn:'mr gusto shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/rZWJZn1ULEoif8pE9' },
+  { id:303, name:'ჯოკერ შაურმა', nameEn:'joker shaurma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/v2NNRw6hosQuMcmeA' },
+  { id:304, name:'შაურმა თაიმ', nameEn:'shaurma time', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/HxuKruzNdqeUFHjz6' },
+  { id:305, name:'ბერლინ შაურმა', nameEn:'berlin shaurma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/oEdMPvtCkQTgVbpu6' },
+  { id:306, name:'მეჯიქალ შაურმა', nameEn:'https://maps.app.goo.gl/dXDKGxfWLW5iufGf9', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/dXDKGxfWLW5iufGf9' },
+  { id:307, name:'ფლეშ შაურმა', nameEn:'mr gusto shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/kUB4jAmS3w83AMuC6' },
+  { id:308, name:'town', nameEn:'town ', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/tYxaVU4wa79p9Vhf8' },
+  { id:309, name:'ავლაბრის შაურმა', nameEn:'avlabris shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/tPQ399oiPetxodeRA' },
+  { id:310, name:'მატატა', nameEn:'matata', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/J89yjZU4c6MhBiKW9' },
+  { id:311, name:'ფრეიბურგი', nameEn:'freiburg', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/zhhUN5EijeBuxvLu9' },
+  { id:312, name:'მაინც შაურმა', nameEn:'mainz shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/1su6abfEhnEhoaws5' },
+  { id:313, name:'შაურმა 300', nameEn:'shaurma 300', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/rgMFGvRxQFeQpxfB6' },
+  { id:314, name:'შაურმა ვეი', nameEn:'shawarma way', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/Auh27JUApE14gtAx9' },
+  { id:315, name:'მეხი შაურმა', nameEn:'mexi shaurma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/58BWWYutjSkPNxfFA' },
+  { id:316, name:'chicken შაურმა', nameEn:'chicken shaurma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/8iLQYi6HsmKdx3J59' },
+  { id:317, name:'shaurma house', nameEn:'shawarma house', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/67iw9KVmEXXhXg6i6' },
+  { id:318, name:'დოლიძის შაურმა', nameEn:'dolidzis shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/Q8ytqPJ4XwigdM2T8' },
+  { id:319, name:'ბინგო შაურმა', nameEn:'bingo shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/kzZkWbpzNxYG2npR6' },
+  { id:320, name:'popo შაურმა', nameEn:'popo shawarma', icon:'🥞', cuisine:'shawarma', maps:'https://maps.app.goo.gl/SisBPPFdM9gyd5X67' },
+
   // ══ აზიური ══
   { id:98,  name:'სუში ბარი',          nameEn:'Sushi Bar',              icon:'🍣', cuisine:'asian', maps:'https://www.google.com/maps/search/Sushi+Bar+თბილისი' },
   { id:99,  name:'ტოკიო გარდენი',      nameEn:'Tokyo Garden',           icon:'🍱', cuisine:'asian', maps:'https://www.google.com/maps/search/Tokyo+Garden+თბილისი' },
